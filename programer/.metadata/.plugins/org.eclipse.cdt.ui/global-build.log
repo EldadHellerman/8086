@@ -1,0 +1,1733 @@
+13:06:58 **** Rebuild of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o 
+Info: Nothing to build for Programmer
+13:12:36 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+..\main.c: In function 'main':
+..\main.c:29:2: warning: implicit declaration of function 'serial_test' [-Wimplicit-function-declaration]
+  serial_test();
+  ^~~~~~~~~~~
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o serial.o "..\\serial.c" 
+..\serial.c: In function 'serial_test':
+..\serial.c:74:23: warning: format '%d' expects argument of type 'int', but argument 3 has type 'DWORD {aka long unsigned int}' [-Wformat=]
+     fprintf(stderr, "%d bytes written\n", bytes_written);
+                       ^
+..\serial.c:67:26: warning: unused variable 'total_bytes_written' [-Wunused-variable]
+     DWORD bytes_written, total_bytes_written = 0;
+                          ^~~~~~~~~~~~~~~~~~~
+gcc -o Programmer.exe main.o serial.o 
+Info: Nothing to build for Programmer
+Info: Nothing to build for Programmer
+13:16:02 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o serial.o "..\\serial.c" 
+..\serial.c: In function 'serial_test':
+..\serial.c:73:23: warning: format '%d' expects argument of type 'int', but argument 3 has type 'DWORD {aka long unsigned int}' [-Wformat=]
+     fprintf(stderr, "%d bytes written\n", bytes_written);
+                       ^
+..\serial.c:66:26: warning: unused variable 'total_bytes_written' [-Wunused-variable]
+     DWORD bytes_written, total_bytes_written = 0;
+                          ^~~~~~~~~~~~~~~~~~~
+gcc -o Programmer.exe main.o serial.o 
+Info: Nothing to build for Programmer
+Info: Nothing to build for Programmer
+13:25:30 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o serial.o "..\\serial.c" 
+..\serial.c: In function 'serial_test':
+..\serial.c:73:23: warning: format '%u' expects argument of type 'unsigned int', but argument 3 has type 'DWORD {aka long unsigned int}' [-Wformat=]
+     fprintf(stderr, "%ul bytes written\n", bytes_written);
+                       ^
+..\serial.c:74:11: error: redeclaration of 'bytes_written' with no linkage
+     DWORD bytes_written, total_bytes_written = 0;
+           ^~~~~~~~~~~~~
+..\serial.c:66:11: note: previous declaration of 'bytes_written' was here
+     DWORD bytes_written;//, total_bytes_written = 0;
+           ^~~~~~~~~~~~~
+..\serial.c:74:26: warning: unused variable 'total_bytes_written' [-Wunused-variable]
+     DWORD bytes_written, total_bytes_written = 0;
+                          ^~~~~~~~~~~~~~~~~~~
+13:25:48 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o serial.o "..\\serial.c" 
+..\serial.c: In function 'serial_test':
+..\serial.c:74:11: error: redeclaration of 'bytes_written' with no linkage
+     DWORD bytes_written, total_bytes_written = 0;
+           ^~~~~~~~~~~~~
+..\serial.c:66:11: note: previous declaration of 'bytes_written' was here
+     DWORD bytes_written;//, total_bytes_written = 0;
+           ^~~~~~~~~~~~~
+..\serial.c:74:26: warning: unused variable 'total_bytes_written' [-Wunused-variable]
+     DWORD bytes_written, total_bytes_written = 0;
+                          ^~~~~~~~~~~~~~~~~~~
+13:26:02 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o serial.o "..\\serial.c" 
+..\serial.c: In function 'serial_test':
+..\serial.c:74:11: error: redeclaration of 'bytes_written' with no linkage
+     DWORD bytes_written, total_bytes_written = 0;
+           ^~~~~~~~~~~~~
+..\serial.c:66:11: note: previous declaration of 'bytes_written' was here
+     DWORD bytes_written;//, total_bytes_written = 0;
+           ^~~~~~~~~~~~~
+..\serial.c:74:26: warning: unused variable 'total_bytes_written' [-Wunused-variable]
+     DWORD bytes_written, total_bytes_written = 0;
+                          ^~~~~~~~~~~~~~~~~~~
+13:29:01 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o serial.o "..\\serial.c" 
+gcc -o Programmer.exe main.o serial.o 
+13:30:01 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o serial.o "..\\serial.c" 
+gcc -o Programmer.exe main.o serial.o 
+Info: Nothing to build for Programmer
+Info: Nothing to build for Programmer
+Info: Nothing to build for Programmer
+13:31:08 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o serial.o "..\\serial.c" 
+gcc -o Programmer.exe main.o serial.o 
+Info: Nothing to build for Programmer
+Info: Nothing to build for Programmer
+13:51:43 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o serial.o "..\\serial.c" 
+..\serial.c: In function 'serial_send':
+..\serial.c:63:48: warning: passing argument 4 of 'WriteFile' from incompatible pointer type [-Wincompatible-pointer-types]
+  if(!WriteFile(hSerial, buffer, buffer_length, &bytes_written, NULL)){
+                                                ^
+In file included from c:\mingw\include\windows.h:44:0,
+                 from ..\serial.c:9:
+c:\mingw\include\winbase.h:2475:24: note: expected 'PDWORD {aka long unsigned int *}' but argument is of type 'int *'
+ WINBASEAPI BOOL WINAPI WriteFile (HANDLE, PCVOID, DWORD, PDWORD, LPOVERLAPPED);
+                        ^~~~~~~~~
+..\serial.c: In function 'serial_read':
+..\serial.c:72:48: warning: passing argument 4 of 'ReadFile' from incompatible pointer type [-Wincompatible-pointer-types]
+  if(!ReadFile(hSerial, &buffer, buffer_length, &bytes_read, NULL)){
+                                                ^
+In file included from c:\mingw\include\windows.h:44:0,
+                 from ..\serial.c:9:
+c:\mingw\include\winbase.h:2255:24: note: expected 'PDWORD {aka long unsigned int *}' but argument is of type 'int *'
+ WINBASEAPI BOOL WINAPI ReadFile (HANDLE, PVOID, DWORD, PDWORD, LPOVERLAPPED);
+                        ^~~~~~~~
+..\serial.c: In function 'serial_test':
+..\serial.c:85:2: warning: implicit declaration of function 'serial_write' [-Wimplicit-function-declaration]
+  serial_write(tx,1);
+  ^~~~~~~~~~~~
+..\serial.c:88:16: warning: format '%d' expects a matching 'int' argument [-Wformat=]
+  printf("read %d bytes\n");
+                ^
+gcc -o Programmer.exe main.o serial.o 
+serial.o: In function `serial_test':
+C:\Users\Eldad\Desktop\folders\hobbys\Programing\8086\programer\Programmer\Debug/../serial.c:85: undefined reference to `serial_write'
+collect2.exe: error: ld returned 1 exit status
+13:52:32 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o serial.o "..\\serial.c" 
+..\serial.c: In function 'serial_write':
+..\serial.c:63:48: warning: passing argument 4 of 'WriteFile' from incompatible pointer type [-Wincompatible-pointer-types]
+  if(!WriteFile(hSerial, buffer, buffer_length, &bytes_written, NULL)){
+                                                ^
+In file included from c:\mingw\include\windows.h:44:0,
+                 from ..\serial.c:9:
+c:\mingw\include\winbase.h:2475:24: note: expected 'PDWORD {aka long unsigned int *}' but argument is of type 'int *'
+ WINBASEAPI BOOL WINAPI WriteFile (HANDLE, PCVOID, DWORD, PDWORD, LPOVERLAPPED);
+                        ^~~~~~~~~
+..\serial.c: In function 'serial_read':
+..\serial.c:72:48: warning: passing argument 4 of 'ReadFile' from incompatible pointer type [-Wincompatible-pointer-types]
+  if(!ReadFile(hSerial, &buffer, buffer_length, &bytes_read, NULL)){
+                                                ^
+In file included from c:\mingw\include\windows.h:44:0,
+                 from ..\serial.c:9:
+c:\mingw\include\winbase.h:2255:24: note: expected 'PDWORD {aka long unsigned int *}' but argument is of type 'int *'
+ WINBASEAPI BOOL WINAPI ReadFile (HANDLE, PVOID, DWORD, PDWORD, LPOVERLAPPED);
+                        ^~~~~~~~
+..\serial.c: In function 'serial_test':
+..\serial.c:88:16: warning: format '%d' expects a matching 'int' argument [-Wformat=]
+  printf("read %d bytes\n");
+                ^
+gcc -o Programmer.exe main.o serial.o 
+Info: Nothing to build for Programmer
+13:53:09 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o serial.o "..\\serial.c" 
+..\serial.c: In function 'serial_test':
+..\serial.c:88:17: warning: format '%lu' expects argument of type 'long unsigned int', but argument 2 has type 'int' [-Wformat=]
+  printf("read %lu bytes\n",read);
+                 ^
+gcc -o Programmer.exe main.o serial.o 
+13:53:23 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o serial.o "..\\serial.c" 
+gcc -o Programmer.exe main.o serial.o 
+Info: Nothing to build for Programmer
+13:54:46 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o serial.o "..\\serial.c" 
+..\serial.c: In function 'serial_test':
+..\serial.c:92:11: warning: format '%s' expects argument of type 'char *', but argument 2 has type 'int' [-Wformat=]
+  printf("%s",read,rx);
+           ^
+..\serial.c:92:9: warning: too many arguments for format [-Wformat-extra-args]
+  printf("%s",read,rx);
+         ^~~~
+gcc -o Programmer.exe main.o serial.o 
+Info: Nothing to build for Programmer
+Info: Nothing to build for Programmer
+13:55:00 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o serial.o "..\\serial.c" 
+..\serial.c: In function 'serial_test':
+..\serial.c:92:11: warning: format '%s' expects argument of type 'char *', but argument 2 has type 'int' [-Wformat=]
+  printf("%s",read,rx);
+           ^
+..\serial.c:92:9: warning: too many arguments for format [-Wformat-extra-args]
+  printf("%s",read,rx);
+         ^~~~
+gcc -o Programmer.exe main.o serial.o 
+Info: Nothing to build for Programmer
+13:55:09 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o serial.o "..\\serial.c" 
+..\serial.c: In function 'serial_test':
+..\serial.c:92:11: warning: format '%s' expects argument of type 'char *', but argument 2 has type 'int' [-Wformat=]
+  printf("%s",read,rx);
+           ^
+..\serial.c:92:9: warning: too many arguments for format [-Wformat-extra-args]
+  printf("%s",read,rx);
+         ^~~~
+gcc -o Programmer.exe main.o serial.o 
+Info: Nothing to build for Programmer
+Info: Nothing to build for Programmer
+13:55:43 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o serial.o "..\\serial.c" 
+gcc -o Programmer.exe main.o serial.o 
+13:56:10 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o serial.o "..\\serial.c" 
+gcc -o Programmer.exe main.o serial.o 
+13:56:38 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o serial.o "..\\serial.c" 
+gcc -o Programmer.exe main.o serial.o 
+13:56:46 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o serial.o "..\\serial.c" 
+gcc -o Programmer.exe main.o serial.o 
+13:57:08 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o serial.o "..\\serial.c" 
+gcc -o Programmer.exe main.o serial.o 
+13:57:30 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o serial.o "..\\serial.c" 
+gcc -o Programmer.exe main.o serial.o 
+Info: Nothing to build for Programmer
+14:00:12 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o serial.o "..\\serial.c" 
+gcc -o Programmer.exe main.o serial.o 
+Info: Nothing to build for Programmer
+Info: Nothing to build for Programmer
+14:00:49 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o serial.o "..\\serial.c" 
+gcc -o Programmer.exe main.o serial.o 
+14:00:57 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o serial.o "..\\serial.c" 
+gcc -o Programmer.exe main.o serial.o 
+14:01:11 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o serial.o "..\\serial.c" 
+gcc -o Programmer.exe main.o serial.o 
+Info: Nothing to build for Programmer
+Info: Nothing to build for Programmer
+14:02:01 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o serial.o "..\\serial.c" 
+gcc -o Programmer.exe main.o serial.o 
+Info: Nothing to build for Programmer
+Info: Nothing to build for Programmer
+14:02:53 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o serial.o "..\\serial.c" 
+gcc -o Programmer.exe main.o serial.o 
+14:49:40 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+..\main.c: In function 'main':
+..\main.c:49:20: warning: implicit declaration of function 'time' [-Wimplicit-function-declaration]
+  unsigned long t = time();
+                    ^~~~
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o serial.o "..\\serial.c" 
+gcc -o Programmer.exe main.o serial.o 
+Info: Nothing to build for Programmer
+14:51:48 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+Info: Nothing to build for Programmer
+14:52:13 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+14:52:43 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+..\main.c: In function 'serial_test':
+..\main.c:39:6: warning: unused variable 'read' [-Wunused-variable]
+  int read = serial_read(rx, 15000);
+      ^~~~
+gcc -o Programmer.exe main.o serial.o 
+Info: Nothing to build for Programmer
+Info: Nothing to build for Programmer
+Info: Nothing to build for Programmer
+14:53:39 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+14:54:09 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+Info: Nothing to build for Programmer
+14:54:37 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+14:55:06 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+16:27:01 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+16:28:15 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+18:27:44 **** Rebuild of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o serial.o "..\\serial.c" 
+gcc -o Programmer.exe main.o serial.o 
+18:32:46 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+18:32:54 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+18:38:03 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+..\main.c: In function 'parse_parameters':
+..\main.c:58:38: warning: multi-character character constant [-Wmultichar]
+    if(length >= 2 && parameter[1] == '--'){
+                                      ^~~~
+..\main.c: In function 'main':
+..\main.c:75:2: warning: implicit declaration of function 'parse_options' [-Wimplicit-function-declaration]
+  parse_options(argc-1,args+1);
+  ^~~~~~~~~~~~~
+gcc -o Programmer.exe main.o serial.o 
+main.o: In function `main':
+C:\Users\Eldad\Desktop\folders\hobbys\Programing\8086\programer\Programmer\Debug/../main.c:75: undefined reference to `parse_options'
+collect2.exe: error: ld returned 1 exit status
+18:38:16 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -o Programmer.exe main.o serial.o 
+main.o: In function `main':
+C:\Users\Eldad\Desktop\folders\hobbys\Programing\8086\programer\Programmer\Debug/../main.c:75: undefined reference to `parse_options'
+collect2.exe: error: ld returned 1 exit status
+18:38:34 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+..\main.c: In function 'parse_parameters':
+..\main.c:58:38: warning: multi-character character constant [-Wmultichar]
+    if(length >= 2 && parameter[1] == '--'){
+                                      ^~~~
+gcc -o Programmer.exe main.o serial.o 
+18:38:52 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+18:39:57 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+18:40:34 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+18:56:11 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+..\main.c:41:22: error: unknown field 'function' specified in initializer
+   {.name = "upload", .function = upload},
+                      ^
+..\main.c:42:20: error: unknown field 'function' specified in initializer
+   {.name = "dump", .function = dump},
+                    ^
+18:56:56 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+18:57:35 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+18:58:08 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+18:58:25 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+18:58:41 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+18:59:30 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+18:59:50 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+19:03:12 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+In file included from c:\mingw\include\time.h:178:0,
+                 from ..\main.c:15:
+..\main.c: In function 'parse_parameters':
+..\main.c:76:23: error: invalid initializer
+  function main_func = NULL;
+                       ^
+..\main.c:100:15: error: invalid operands to binary != (have 'function {aka struct <anonymous>}' and 'void *')
+  if(main_func != NULL){
+               ^~
+..\main.c:102:3: error: too few arguments to function 'main_func.cb'
+   main_func.cb();
+   ^~~~~~~~~
+At top level:
+..\main.c:25:10: warning: 'current_parameters' defined but not used [-Wunused-variable]
+ } static current_parameters;
+          ^~~~~~~~~~~~~~~~~~
+19:04:18 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+..\main.c: In function 'parse_parameters':
+..\main.c:102:4: error: too few arguments to function 'main_func->cb'
+   (*main_func).cb();
+   ~^~~~~~~~~~~
+At top level:
+..\main.c:25:10: warning: 'current_parameters' defined but not used [-Wunused-variable]
+ } static current_parameters;
+          ^~~~~~~~~~~~~~~~~~
+19:04:37 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+..\main.c:25:10: warning: 'current_parameters' defined but not used [-Wunused-variable]
+ } static current_parameters;
+          ^~~~~~~~~~~~~~~~~~
+gcc -o Programmer.exe main.o serial.o 
+19:13:51 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+19:14:13 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+19:14:40 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+19:15:12 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+19:17:37 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+..\main.c: In function 'parse_parameters':
+..\main.c:85:19: warning: passing argument 1 of 'strcasecmp' makes pointer from integer without a cast [-Wint-conversion]
+     if(strcasecmp(parameter[2],"comport") == 0){
+                   ^~~~~~~~~
+In file included from c:\mingw\include\string.h:62:0,
+                 from c:\mingw\include\mem.h:6,
+                 from ..\main.c:12:
+c:\mingw\include\strings.h:63:29: note: expected 'const char *' but argument is of type 'char'
+ int __cdecl __MINGW_NOTHROW strcasecmp( const char *, const char * );
+                             ^~~~~~~~~~
+..\main.c:87:25: warning: passing argument 1 of 'strcasecmp' makes pointer from integer without a cast [-Wint-conversion]
+     }else if(strcasecmp(parameter[2],"buadrate") == 0){
+                         ^~~~~~~~~
+In file included from c:\mingw\include\string.h:62:0,
+                 from c:\mingw\include\mem.h:6,
+                 from ..\main.c:12:
+c:\mingw\include\strings.h:63:29: note: expected 'const char *' but argument is of type 'char'
+ int __cdecl __MINGW_NOTHROW strcasecmp( const char *, const char * );
+                             ^~~~~~~~~~
+gcc -o Programmer.exe main.o serial.o 
+19:17:54 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+19:19:54 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+19:21:17 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+19:27:17 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+19:27:41 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+..\main.c: In function 'parse_parameters':
+..\main.c:87:8: warning: implicit declaration of function 'strcasecmpn' [-Wimplicit-function-declaration]
+     if(strcasecmpn(&parameter[2],"comport",strlen("comport")) == 0){
+        ^~~~~~~~~~~
+gcc -o Programmer.exe main.o serial.o 
+main.o: In function `parse_parameters':
+C:\Users\Eldad\Desktop\folders\hobbys\Programing\8086\programer\Programmer\Debug/../main.c:87: undefined reference to `strcasecmpn'
+collect2.exe: error: ld returned 1 exit status
+19:29:19 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+19:30:37 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+19:31:50 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+19:46:03 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+..\main.c: In function 'upload':
+..\main.c:36:37: warning: unknown conversion type character 'a' in format [-Wformat=]
+  printf("uploading %s through com % at %d\n",p->input_file_path, p->com_port, p->baud_rate);
+                                     ^
+..\main.c:36:9: warning: too many arguments for format [-Wformat-extra-args]
+  printf("uploading %s through com % at %d\n",p->input_file_path, p->com_port, p->baud_rate);
+         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+gcc -o Programmer.exe main.o serial.o 
+19:46:11 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+19:48:32 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+..\main.c:23:16: error: expected ':', ',', ';', '}' or '__attribute__' before '=' token
+  int baud_rate = 0;
+                ^
+..\main.c: In function 'upload':
+..\main.c:36:48: error: 'struct parameters' has no member named 'input_file_path'
+  printf("uploading %s through com %d at %d\n",p->input_file_path, p->com_port, p->baud_rate);
+                                                ^~
+..\main.c:36:68: error: 'struct parameters' has no member named 'com_port'
+  printf("uploading %s through com %d at %d\n",p->input_file_path, p->com_port, p->baud_rate);
+                                                                    ^~
+..\main.c:36:81: error: 'struct parameters' has no member named 'baud_rate'
+  printf("uploading %s through com %d at %d\n",p->input_file_path, p->com_port, p->baud_rate);
+                                                                                 ^~
+..\main.c: In function 'dump':
+..\main.c:41:51: error: 'struct parameters' has no member named 'input_file_path'
+  printf("dumping memory through com %d at %d to",p->input_file_path, p->com_port, p->baud_rate);
+                                                   ^~
+..\main.c:41:71: error: 'struct parameters' has no member named 'com_port'
+  printf("dumping memory through com %d at %d to",p->input_file_path, p->com_port, p->baud_rate);
+                                                                       ^~
+..\main.c:41:84: error: 'struct parameters' has no member named 'baud_rate'
+  printf("dumping memory through com %d at %d to",p->input_file_path, p->com_port, p->baud_rate);
+                                                                                    ^~
+..\main.c:42:6: error: 'struct parameters' has no member named 'output_file_path'
+  if(p->output_file_path == NULL) printf("terminal\n"); else printf(" file %s\n",p->output_file_path);
+      ^~
+..\main.c:42:82: error: 'struct parameters' has no member named 'output_file_path'
+  if(p->output_file_path == NULL) printf("terminal\n"); else printf(" file %s\n",p->output_file_path);
+                                                                                  ^~
+..\main.c: In function 'parse_parameters':
+..\main.c:91:74: error: 'struct parameters' has no member named 'com_port'
+      if(sscanf(&parameter[2 + strlen("comport")],"%d",&current_parameters.com_port) == 0) error = 3;
+                                                                          ^
+..\main.c:93:75: error: 'struct parameters' has no member named 'baud_rate'
+      if(sscanf(&parameter[2 + strlen("baudrate")],"%d",&current_parameters.baud_rate) == 0) error = 4;
+                                                                           ^
+..\main.c:100:54: error: 'struct parameters' has no member named 'com_port'
+      if(sscanf(&parameter[2],"%d",&current_parameters.com_port) == 0) error = 5;
+                                                      ^
+..\main.c:103:54: error: 'struct parameters' has no member named 'baud_rate'
+      if(sscanf(&parameter[2],"%d",&current_parameters.baud_rate) == 0) error = 6;
+                                                      ^
+..\main.c:107:24: error: 'struct parameters' has no member named 'output_file_path'
+      current_parameters.output_file_path = &parameter[2];
+                        ^
+..\main.c:111:24: error: 'struct parameters' has no member named 'input_file_path'
+      current_parameters.input_file_path = &parameter[2];
+                        ^
+19:49:44 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+..\main.c: In function 'dump':
+..\main.c:41:38: warning: format '%d' expects argument of type 'int', but argument 2 has type 'char *' [-Wformat=]
+  printf("dumping memory through com %d at %d to",p->input_file_path, p->com_port, p->baud_rate);
+                                      ^
+..\main.c:41:9: warning: too many arguments for format [-Wformat-extra-args]
+  printf("dumping memory through com %d at %d to",p->input_file_path, p->com_port, p->baud_rate);
+         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+..\main.c: In function 'main':
+..\main.c:146:23: error: expected expression before '{' token
+  current_parameters = {.baud_rate = 0};
+                       ^
+19:50:01 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+..\main.c: In function 'dump':
+..\main.c:41:38: warning: format '%d' expects argument of type 'int', but argument 2 has type 'char *' [-Wformat=]
+  printf("dumping memory through com %d at %d to",p->input_file_path, p->com_port, p->baud_rate);
+                                      ^
+..\main.c:41:9: warning: too many arguments for format [-Wformat-extra-args]
+  printf("dumping memory through com %d at %d to",p->input_file_path, p->com_port, p->baud_rate);
+         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+gcc -o Programmer.exe main.o serial.o 
+19:50:39 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+..\main.c: In function 'dump':
+..\main.c:41:38: warning: format '%d' expects argument of type 'int', but argument 2 has type 'char *' [-Wformat=]
+  printf("dumping memory through com %d at %d to ",p->input_file_path, p->com_port, p->baud_rate);
+                                      ^
+..\main.c:41:9: warning: too many arguments for format [-Wformat-extra-args]
+  printf("dumping memory through com %d at %d to ",p->input_file_path, p->com_port, p->baud_rate);
+         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+gcc -o Programmer.exe main.o serial.o 
+19:50:46 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+19:56:26 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+19:56:43 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+19:57:14 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+19:57:49 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+19:57:58 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+19:58:09 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+19:59:00 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+19:59:16 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+19:59:25 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+19:59:31 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+20:00:40 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+20:01:39 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+20:57:28 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+..\main.c: In function 'upload':
+..\main.c:62:9: error: 'src' undeclared (first use in this function)
+  fclose(src);
+         ^~~
+..\main.c:62:9: note: each undeclared identifier is reported only once for each function it appears in
+..\main.c: In function 'dump':
+..\main.c:96:10: error: 'src' undeclared (first use in this function)
+   fclose(src);
+          ^~~
+20:57:38 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+21:17:01 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+21:17:31 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+21:20:20 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+21:20:45 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+21:21:01 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+21:21:21 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+21:21:38 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+21:22:15 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+21:26:13 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+21:30:00 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+21:30:38 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+21:43:46 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+22:03:53 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+22:04:42 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+22:19:15 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+22:20:02 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+22:20:44 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+22:32:02 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+13:35:15 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+14:35:29 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+Info: Nothing to build for Programmer
+14:59:01 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+15:02:37 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+19:18:57 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+19:19:56 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+19:20:53 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+19:21:16 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+19:21:51 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+19:27:38 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+19:30:14 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+19:39:38 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+20:01:43 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+20:06:41 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+c:/mingw/bin/../lib/gcc/mingw32/6.3.0/../../../../mingw32/bin/ld.exe: cannot open output file Programmer.exe: Permission denied
+collect2.exe: error: ld returned 1 exit status
+20:09:42 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+20:10:01 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+20:58:33 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+20:59:24 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+21:00:54 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+21:05:23 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+21:05:49 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+21:07:57 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+23:40:37 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+23:43:44 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+23:44:33 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+23:44:46 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+00:00:39 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+00:04:52 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+00:05:49 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+00:06:03 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+Info: Nothing to build for Programmer
+00:30:52 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+00:32:03 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+00:32:44 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+00:34:02 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+02:02:26 **** Rebuild of configuration Debug for project Programmer V1 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o serial.o "..\\serial.c" 
+gcc -o "Programmer V1.exe" main.o serial.o 
+Info: Nothing to build for Programmer V1
+Info: Nothing to build for Programmer V1
+02:02:53 **** Clean-only build of configuration Debug for project Programmer V1 ****
+rm -rf serial.d "Programmer V1.exe" main.o main.d serial.o 
+02:02:55 **** Rebuild of configuration Debug for project Programmer V1 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o serial.o "..\\serial.c" 
+gcc -o "Programmer V1.exe" main.o serial.o 
+02:18:04 **** Incremental Build of configuration Debug for project Programmer V1 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o serial.o "..\\serial.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+02:19:34 **** Rebuild of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o cli_library_V1.o "..\\cli_library_V1.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+..\main.c: In function 'upload':
+..\main.c:82:23: warning: assignment makes integer from pointer without a cast [-Wint-conversion]
+  if((memory_start_str = cli_get_parameter(cli_p, "-ms")) == NULL || (sscanf(memory_start_str,"%d",memory_start) != 1)){
+                       ^
+..\main.c:82:58: warning: comparison between pointer and integer
+  if((memory_start_str = cli_get_parameter(cli_p, "-ms")) == NULL || (sscanf(memory_start_str,"%d",memory_start) != 1)){
+                                                          ^~
+..\main.c:82:77: warning: passing argument 1 of 'sscanf' makes pointer from integer without a cast [-Wint-conversion]
+  if((memory_start_str = cli_get_parameter(cli_p, "-ms")) == NULL || (sscanf(memory_start_str,"%d",memory_start) != 1)){
+                                                                             ^~~~~~~~~~~~~~~~
+In file included from ..\main.c:10:0:
+c:\mingw\include\stdio.h:668:41: note: expected 'const char *' but argument is of type 'char'
+ _CRTIMP __cdecl __MINGW_NOTHROW  int    sscanf (const char *, const char *, ...);
+                                         ^~~~~~
+..\main.c:82:96: warning: format '%d' expects argument of type 'int *', but argument 3 has type 'int' [-Wformat=]
+  if((memory_start_str = cli_get_parameter(cli_p, "-ms")) == NULL || (sscanf(memory_start_str,"%d",memory_start) != 1)){
+                                                                                                ^
+..\main.c:112:18: error: 'p' undeclared (first use in this function)
+   if(send_uint32(p->memory_start)) break;
+                  ^
+..\main.c:112:18: note: each undeclared identifier is reported only once for each function it appears in
+..\main.c: In function 'main':
+..\main.c:383:2: warning: implicit declaration of function 'parse_parameters' [-Wimplicit-function-declaration]
+  parse_parameters(argc-1,args+1);
+  ^~~~~~~~~~~~~~~~
+02:19:35 **** Incremental Build of configuration Debug for project Programmer V1 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o serial.o "..\\serial.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+02:19:44 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o cli_library_V1.o "..\\cli_library_V1.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o serial.o "..\\serial.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+..\main.c: In function 'upload':
+..\main.c:82:23: warning: assignment makes integer from pointer without a cast [-Wint-conversion]
+  if((memory_start_str = cli_get_parameter(cli_p, "-ms")) == NULL || (sscanf(memory_start_str,"%d",memory_start) != 1)){
+                       ^
+..\main.c:82:58: warning: comparison between pointer and integer
+  if((memory_start_str = cli_get_parameter(cli_p, "-ms")) == NULL || (sscanf(memory_start_str,"%d",memory_start) != 1)){
+                                                          ^~
+..\main.c:82:77: warning: passing argument 1 of 'sscanf' makes pointer from integer without a cast [-Wint-conversion]
+  if((memory_start_str = cli_get_parameter(cli_p, "-ms")) == NULL || (sscanf(memory_start_str,"%d",memory_start) != 1)){
+                                                                             ^~~~~~~~~~~~~~~~
+In file included from ..\main.c:10:0:
+c:\mingw\include\stdio.h:668:41: note: expected 'const char *' but argument is of type 'char'
+ _CRTIMP __cdecl __MINGW_NOTHROW  int    sscanf (const char *, const char *, ...);
+                                         ^~~~~~
+..\main.c:82:96: warning: format '%d' expects argument of type 'int *', but argument 3 has type 'int' [-Wformat=]
+  if((memory_start_str = cli_get_parameter(cli_p, "-ms")) == NULL || (sscanf(memory_start_str,"%d",memory_start) != 1)){
+                                                                                                ^
+..\main.c: In function 'main':
+..\main.c:383:2: warning: implicit declaration of function 'parse_parameters' [-Wimplicit-function-declaration]
+  parse_parameters(argc-1,args+1);
+  ^~~~~~~~~~~~~~~~
+..\main.c: In function 'upload':
+..\main.c:82:70: warning: 'memory_start' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  if((memory_start_str = cli_get_parameter(cli_p, "-ms")) == NULL || (sscanf(memory_start_str,"%d",memory_start) != 1)){
+                                                                      ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+gcc -o "Programmer V1.exe" cli_library_V1.o main.o serial.o 
+02:19:48 **** Incremental Build of configuration Debug for project Programmer V1 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o serial.o "..\\serial.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+02:19:56 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o cli_library_V1.o "..\\cli_library_V1.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o serial.o "..\\serial.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+..\main.c: In function 'upload':
+..\main.c:82:23: warning: assignment makes integer from pointer without a cast [-Wint-conversion]
+  if((memory_start_str = cli_get_parameter(cli_p, "-ms")) == NULL || (sscanf(memory_start_str,"%d",memory_start) != 1)){
+                       ^
+..\main.c:82:58: warning: comparison between pointer and integer
+  if((memory_start_str = cli_get_parameter(cli_p, "-ms")) == NULL || (sscanf(memory_start_str,"%d",memory_start) != 1)){
+                                                          ^~
+..\main.c:82:77: warning: passing argument 1 of 'sscanf' makes pointer from integer without a cast [-Wint-conversion]
+  if((memory_start_str = cli_get_parameter(cli_p, "-ms")) == NULL || (sscanf(memory_start_str,"%d",memory_start) != 1)){
+                                                                             ^~~~~~~~~~~~~~~~
+In file included from ..\main.c:10:0:
+c:\mingw\include\stdio.h:668:41: note: expected 'const char *' but argument is of type 'char'
+ _CRTIMP __cdecl __MINGW_NOTHROW  int    sscanf (const char *, const char *, ...);
+                                         ^~~~~~
+..\main.c:82:96: warning: format '%d' expects argument of type 'int *', but argument 3 has type 'int' [-Wformat=]
+  if((memory_start_str = cli_get_parameter(cli_p, "-ms")) == NULL || (sscanf(memory_start_str,"%d",memory_start) != 1)){
+                                                                                                ^
+..\main.c: In function 'main':
+..\main.c:383:2: warning: implicit declaration of function 'parse_parameters' [-Wimplicit-function-declaration]
+  parse_parameters(argc-1,args+1);
+  ^~~~~~~~~~~~~~~~
+..\main.c: In function 'upload':
+..\main.c:82:70: warning: 'memory_start' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  if((memory_start_str = cli_get_parameter(cli_p, "-ms")) == NULL || (sscanf(memory_start_str,"%d",memory_start) != 1)){
+                                                                      ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+gcc -o "Programmer V1.exe" cli_library_V1.o main.o serial.o 
+02:20:23 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+..\main.c: In function 'upload':
+..\main.c:82:23: warning: assignment makes integer from pointer without a cast [-Wint-conversion]
+  if((memory_start_str = cli_get_parameter(cli_p, "-ms")) == NULL || (sscanf(memory_start_str,"%d",&memory_start) != 1)){
+                       ^
+..\main.c:82:58: warning: comparison between pointer and integer
+  if((memory_start_str = cli_get_parameter(cli_p, "-ms")) == NULL || (sscanf(memory_start_str,"%d",&memory_start) != 1)){
+                                                          ^~
+..\main.c:82:77: warning: passing argument 1 of 'sscanf' makes pointer from integer without a cast [-Wint-conversion]
+  if((memory_start_str = cli_get_parameter(cli_p, "-ms")) == NULL || (sscanf(memory_start_str,"%d",&memory_start) != 1)){
+                                                                             ^~~~~~~~~~~~~~~~
+In file included from ..\main.c:10:0:
+c:\mingw\include\stdio.h:668:41: note: expected 'const char *' but argument is of type 'char'
+ _CRTIMP __cdecl __MINGW_NOTHROW  int    sscanf (const char *, const char *, ...);
+                                         ^~~~~~
+..\main.c: In function 'main':
+..\main.c:384:2: warning: implicit declaration of function 'parse_parameters' [-Wimplicit-function-declaration]
+  parse_parameters(argc-1,args+1);
+  ^~~~~~~~~~~~~~~~
+gcc -o Programmer.exe cli_library_V1.o main.o serial.o 
+02:20:34 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+..\main.c: In function 'upload':
+..\main.c:82:23: warning: assignment makes integer from pointer without a cast [-Wint-conversion]
+  if((memory_start_str = cli_get_parameter(cli_p, "-ms")) == NULL || (sscanf(memory_start_str,"%d",&memory_start) != 1)){
+                       ^
+..\main.c:82:58: warning: comparison between pointer and integer
+  if((memory_start_str = cli_get_parameter(cli_p, "-ms")) == NULL || (sscanf(memory_start_str,"%d",&memory_start) != 1)){
+                                                          ^~
+..\main.c:82:77: warning: passing argument 1 of 'sscanf' makes pointer from integer without a cast [-Wint-conversion]
+  if((memory_start_str = cli_get_parameter(cli_p, "-ms")) == NULL || (sscanf(memory_start_str,"%d",&memory_start) != 1)){
+                                                                             ^~~~~~~~~~~~~~~~
+In file included from ..\main.c:10:0:
+c:\mingw\include\stdio.h:668:41: note: expected 'const char *' but argument is of type 'char'
+ _CRTIMP __cdecl __MINGW_NOTHROW  int    sscanf (const char *, const char *, ...);
+                                         ^~~~~~
+..\main.c: In function 'main':
+..\main.c:384:2: warning: implicit declaration of function 'parse_parameters' [-Wimplicit-function-declaration]
+  parse_parameters(argc-1,args+1);
+  ^~~~~~~~~~~~~~~~
+..\main.c:366:8: warning: unused variable 'test' [-Wunused-variable]
+  char *test = "12345";
+        ^~~~
+gcc -o Programmer.exe cli_library_V1.o main.o serial.o 
+02:22:29 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+..\main.c: In function 'main':
+..\main.c:380:2: warning: implicit declaration of function 'parse_parameters' [-Wimplicit-function-declaration]
+  parse_parameters(argc-1,args+1);
+  ^~~~~~~~~~~~~~~~
+gcc -o Programmer.exe cli_library_V1.o main.o serial.o 
+main.o: In function `main':
+C:\Users\Eldad\Desktop\folders\hobbys\Programing\8086\programer\Programmer\Debug/../main.c:380: undefined reference to `parse_parameters'
+collect2.exe: error: ld returned 1 exit status
+02:22:30 **** Incremental Build of configuration Debug for project Programmer V1 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o serial.o "..\\serial.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+02:23:43 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o serial.o "..\\serial.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o cli_library_V1.o "..\\cli_library_V1.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+..\main.c: In function 'main':
+..\main.c:380:2: warning: implicit declaration of function 'parse_parameters' [-Wimplicit-function-declaration]
+  parse_parameters(argc-1,args+1);
+  ^~~~~~~~~~~~~~~~
+gcc -o "Programmer V1.exe" cli_library_V1.o main.o serial.o 
+main.o: In function `main':
+C:\Users\Eldad\Desktop\folders\hobbys\Programing\8086\programer\Programmer\Debug/../main.c:380: undefined reference to `parse_parameters'
+collect2.exe: error: ld returned 1 exit status
+02:23:46 **** Incremental Build of configuration Debug for project Programmer V1 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o serial.o "..\\serial.c" 
+gcc -o Programmer.exe main.o serial.o 
+03:05:23 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+..\main.c: In function 'start_serial':
+..\main.c:37:14: error: 'current_parameters' undeclared (first use in this function)
+  serial_open(current_parameters.com_port, current_parameters.baud_rate);
+              ^~~~~~~~~~~~~~~~~~
+..\main.c:37:14: note: each undeclared identifier is reported only once for each function it appears in
+..\main.c: In function 'upload':
+..\main.c:75:37: warning: passing argument 3 of 'get_int_parameter' makes pointer from integer without a cast [-Wint-conversion]
+  if(get_int_parameter(cli_p, "-ms", memory_start)){
+                                     ^~~~~~~~~~~~
+..\main.c:60:9: note: expected 'int *' but argument is of type 'int'
+ boolean get_int_parameter(cli_profile profile, char *name, int *number){
+         ^~~~~~~~~~~~~~~~~
+..\main.c: In function 'erase':
+..\main.c:233:38: warning: pointer targets in passing argument 3 of 'get_int_parameter' differ in signedness [-Wpointer-sign]
+  if(!get_int_parameter(cli_p, "-mb", &block)){
+                                      ^
+..\main.c:60:9: note: expected 'int *' but argument is of type 'unsigned int *'
+ boolean get_int_parameter(cli_profile profile, char *name, int *number){
+         ^~~~~~~~~~~~~~~~~
+..\main.c:247:38: warning: pointer targets in passing argument 3 of 'get_int_parameter' differ in signedness [-Wpointer-sign]
+   if(get_int_parameter(cli_p, "-ms", &address)){
+                                      ^
+..\main.c:60:9: note: expected 'int *' but argument is of type 'unsigned int *'
+ boolean get_int_parameter(cli_profile profile, char *name, int *number){
+         ^~~~~~~~~~~~~~~~~
+..\main.c: In function '_setup':
+..\main.c:293:39: error: 'profile' undeclared (first use in this function)
+  if((com_port_str = cli_get_parameter(profile, "-c")) == NULL || (sscanf(com_port_str,"%d",com_port) != 1)){
+                                       ^~~~~~~
+..\main.c:293:89: warning: format '%d' expects argument of type 'int *', but argument 3 has type 'int' [-Wformat=]
+  if((com_port_str = cli_get_parameter(profile, "-c")) == NULL || (sscanf(com_port_str,"%d",com_port) != 1)){
+                                                                                         ^
+..\main.c:298:89: warning: format '%d' expects argument of type 'int *', but argument 3 has type 'int' [-Wformat=]
+  if((baud_rate_str = cli_get_parameter(cli_p, "-b")) == NULL || (sscanf(baud_rate_str,"%d",baud_rate) != 1)){
+                                                                                         ^
+..\main.c: In function 'create_cli':
+..\main.c:309:25: warning: passing argument 1 of 'cli_set_setup_function' from incompatible pointer type [-Wincompatible-pointer-types]
+  cli_set_setup_function(_setup);
+                         ^~~~~~
+In file included from ..\main.c:18:0:
+..\cli_library_V1.h:67:6: note: expected 'cli_profile {aka struct cli_profile *}' but argument is of type 'void (*)(struct cli_profile *)'
+ void cli_set_setup_function(cli_profile profile, cli_callback cb);
+      ^~~~~~~~~~~~~~~~~~~~~~
+..\main.c:309:2: error: too few arguments to function 'cli_set_setup_function'
+  cli_set_setup_function(_setup);
+  ^~~~~~~~~~~~~~~~~~~~~~
+In file included from ..\main.c:18:0:
+..\cli_library_V1.h:67:6: note: declared here
+ void cli_set_setup_function(cli_profile profile, cli_callback cb);
+      ^~~~~~~~~~~~~~~~~~~~~~
+03:05:24 **** Incremental Build of configuration Debug for project Programmer V1 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o serial.o "..\\serial.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+03:07:56 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+..\main.c: In function 'upload':
+..\main.c:75:37: warning: pointer targets in passing argument 3 of 'get_int_parameter' differ in signedness [-Wpointer-sign]
+  if(get_int_parameter(cli_p, "-ms", &memory_start)){
+                                     ^
+..\main.c:60:9: note: expected 'unsigned int *' but argument is of type 'int *'
+ boolean get_int_parameter(cli_profile profile, char *name, unsigned int *number){
+         ^~~~~~~~~~~~~~~~~
+..\main.c: In function 'dump':
+..\main.c:145:37: warning: pointer targets in passing argument 3 of 'get_int_parameter' differ in signedness [-Wpointer-sign]
+  if(get_int_parameter(cli_p, "-ms", &start) || get_int_parameter(cli_p, "-ml", &length)){
+                                     ^
+..\main.c:60:9: note: expected 'unsigned int *' but argument is of type 'int *'
+ boolean get_int_parameter(cli_profile profile, char *name, unsigned int *number){
+         ^~~~~~~~~~~~~~~~~
+..\main.c:145:80: warning: pointer targets in passing argument 3 of 'get_int_parameter' differ in signedness [-Wpointer-sign]
+  if(get_int_parameter(cli_p, "-ms", &start) || get_int_parameter(cli_p, "-ml", &length)){
+                                                                                ^
+..\main.c:60:9: note: expected 'unsigned int *' but argument is of type 'int *'
+ boolean get_int_parameter(cli_profile profile, char *name, unsigned int *number){
+         ^~~~~~~~~~~~~~~~~
+..\main.c: In function 'interrupt':
+..\main.c:208:39: warning: pointer targets in passing argument 3 of 'get_int_parameter' differ in signedness [-Wpointer-sign]
+  if(get_int_parameter(cli_p, "-intr", &interrupt_number)){
+                                       ^
+..\main.c:60:9: note: expected 'unsigned int *' but argument is of type 'int *'
+ boolean get_int_parameter(cli_profile profile, char *name, unsigned int *number){
+         ^~~~~~~~~~~~~~~~~
+..\main.c: In function '_setup':
+..\main.c:292:36: warning: pointer targets in passing argument 3 of 'get_int_parameter' differ in signedness [-Wpointer-sign]
+  if(get_int_parameter(cli_p, "-c", &com_port)){
+                                    ^
+..\main.c:60:9: note: expected 'unsigned int *' but argument is of type 'int *'
+ boolean get_int_parameter(cli_profile profile, char *name, unsigned int *number){
+         ^~~~~~~~~~~~~~~~~
+..\main.c:297:36: warning: pointer targets in passing argument 3 of 'get_int_parameter' differ in signedness [-Wpointer-sign]
+  if(get_int_parameter(cli_p, "-b", &baud_rate)){
+                                    ^
+..\main.c:60:9: note: expected 'unsigned int *' but argument is of type 'int *'
+ boolean get_int_parameter(cli_profile profile, char *name, unsigned int *number){
+         ^~~~~~~~~~~~~~~~~
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o cli_library_V1.o "..\\cli_library_V1.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o serial.o "..\\serial.c" 
+gcc -o "Programmer V1.exe" cli_library_V1.o main.o serial.o 
+03:07:59 **** Incremental Build of configuration Debug for project Programmer V1 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o serial.o "..\\serial.c" 
+gcc -o Programmer.exe main.o serial.o 
+03:08:58 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o serial.o "..\\serial.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o cli_library_V1.o "..\\cli_library_V1.c" 
+gcc -o "Programmer V1.exe" cli_library_V1.o main.o serial.o 
+03:09:02 **** Incremental Build of configuration Debug for project Programmer V1 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o serial.o "..\\serial.c" 
+gcc -o Programmer.exe main.o serial.o 
+03:10:16 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o cli_library_V1.o "..\\cli_library_V1.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o serial.o "..\\serial.c" 
+gcc -o "Programmer V1.exe" cli_library_V1.o main.o serial.o 
+03:10:19 **** Incremental Build of configuration Debug for project Programmer V1 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o serial.o "..\\serial.c" 
+gcc -o Programmer.exe main.o serial.o 
+03:15:58 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o cli_library_V1.o "..\\cli_library_V1.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o serial.o "..\\serial.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o "Programmer V1.exe" cli_library_V1.o main.o serial.o 
+03:16:02 **** Incremental Build of configuration Debug for project Programmer V1 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o serial.o "..\\serial.c" 
+gcc -o Programmer.exe main.o serial.o 
+03:19:24 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o cli_library_V1.o "..\\cli_library_V1.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o serial.o "..\\serial.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o "Programmer V1.exe" cli_library_V1.o main.o serial.o 
+03:19:27 **** Incremental Build of configuration Debug for project Programmer V1 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o serial.o "..\\serial.c" 
+gcc -o Programmer.exe main.o serial.o 
+03:23:28 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o cli_library_V1.o "..\\cli_library_V1.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o serial.o "..\\serial.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o "Programmer V1.exe" cli_library_V1.o main.o serial.o 
+03:23:31 **** Incremental Build of configuration Debug for project Programmer V1 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o serial.o "..\\serial.c" 
+gcc -o Programmer.exe main.o serial.o 
+03:24:02 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o cli_library_V1.o "..\\cli_library_V1.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o serial.o "..\\serial.c" 
+gcc -o "Programmer V1.exe" cli_library_V1.o main.o serial.o 
+03:24:05 **** Incremental Build of configuration Debug for project Programmer V1 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o serial.o "..\\serial.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe main.o serial.o 
+03:24:21 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o cli_library_V1.o "..\\cli_library_V1.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o serial.o "..\\serial.c" 
+gcc -o "Programmer V1.exe" cli_library_V1.o main.o serial.o 
+03:24:24 **** Incremental Build of configuration Debug for project Programmer V1 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o serial.o "..\\serial.c" 
+gcc -o Programmer.exe main.o serial.o 
+17:41:40 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe cli_library_V1.o main.o serial.o 
+Info: Nothing to build for Programmer V1
+17:43:29 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe cli_library_V1.o main.o serial.o 
+Info: Nothing to build for Programmer V1
+Info: Nothing to build for Programmer
+Info: Nothing to build for Programmer V1
+Info: Nothing to build for Programmer
+Info: Nothing to build for Programmer V1
+17:44:49 **** Clean-only build of configuration Debug for project Programmer ****
+rm -rf cli_library_V1.o main.o Programmer.exe serial.d main.d cli_library_V1.d serial.o 
+17:44:52 **** Rebuild of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o cli_library_V1.o "..\\cli_library_V1.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o serial.o "..\\serial.c" 
+gcc -o Programmer.exe cli_library_V1.o main.o serial.o 
+Info: Nothing to build for Programmer V1
+17:45:50 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe cli_library_V1.o main.o serial.o 
+Info: Nothing to build for Programmer V1
+17:53:06 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe cli_library_V1.o main.o serial.o 
+Info: Nothing to build for Programmer V1
+18:01:01 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+..\main.c: In function 'terminal':
+..\main.c:267:25: error: 'profile' undeclared (first use in this function)
+   cli_parse_from_string(profile, argument, strlen(argument));
+                         ^~~~~~~
+..\main.c:267:25: note: each undeclared identifier is reported only once for each function it appears in
+Info: Nothing to build for Programmer V1
+18:01:33 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe cli_library_V1.o main.o serial.o 
+Info: Nothing to build for Programmer V1
+18:02:24 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe cli_library_V1.o main.o serial.o 
+Info: Nothing to build for Programmer V1
+18:04:32 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe cli_library_V1.o main.o serial.o 
+c:/mingw/bin/../lib/gcc/mingw32/6.3.0/../../../../mingw32/bin/ld.exe: cannot open output file Programmer.exe: Permission denied
+collect2.exe: error: ld returned 1 exit status
+18:04:39 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -o Programmer.exe cli_library_V1.o main.o serial.o 
+c:/mingw/bin/../lib/gcc/mingw32/6.3.0/../../../../mingw32/bin/ld.exe: cannot open output file Programmer.exe: Permission denied
+collect2.exe: error: ld returned 1 exit status
+Info: Nothing to build for Programmer V1
+18:06:34 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe cli_library_V1.o main.o serial.o 
+Info: Nothing to build for Programmer V1
+18:08:39 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe cli_library_V1.o main.o serial.o 
+c:/mingw/bin/../lib/gcc/mingw32/6.3.0/../../../../mingw32/bin/ld.exe: cannot open output file Programmer.exe: Permission denied
+collect2.exe: error: ld returned 1 exit status
+Info: Nothing to build for Programmer V1
+18:09:36 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe cli_library_V1.o main.o serial.o 
+c:/mingw/bin/../lib/gcc/mingw32/6.3.0/../../../../mingw32/bin/ld.exe: cannot open output file Programmer.exe: Permission denied
+collect2.exe: error: ld returned 1 exit status
+Info: Nothing to build for Programmer V1
+18:10:49 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe cli_library_V1.o main.o serial.o 
+Info: Nothing to build for Programmer V1
+18:11:41 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe cli_library_V1.o main.o serial.o 
+Info: Nothing to build for Programmer V1
+18:15:18 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe cli_library_V1.o main.o serial.o 
+Info: Nothing to build for Programmer V1
+18:15:59 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe cli_library_V1.o main.o serial.o 
+Info: Nothing to build for Programmer V1
+18:16:51 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+..\main.c: In function 'terminal':
+..\main.c:272:2: warning: implicit declaration of function 'create_cli' [-Wimplicit-function-declaration]
+  create_cli();
+  ^~~~~~~~~~
+..\main.c: At top level:
+..\main.c:304:6: warning: conflicting types for 'create_cli'
+ void create_cli(void){
+      ^~~~~~~~~~
+..\main.c:272:2: note: previous implicit declaration of 'create_cli' was here
+  create_cli();
+  ^~~~~~~~~~
+gcc -o Programmer.exe cli_library_V1.o main.o serial.o 
+Info: Nothing to build for Programmer V1
+18:20:23 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+..\main.c: In function 'cli_setup':
+..\main.c:33:5: warning: implicit declaration of function 'get_int_parameter' [-Wimplicit-function-declaration]
+  if(get_int_parameter(cli_p, "-c", &com_port)){
+     ^~~~~~~~~~~~~~~~~
+..\main.c: In function 'create_cli':
+..\main.c:48:58: error: 'upload' undeclared (first use in this function)
+  cli_add_function(profile, "upload", "upload to memory", upload);
+                                                          ^~~~~~
+..\main.c:48:58: note: each undeclared identifier is reported only once for each function it appears in
+..\main.c:49:51: error: 'dump' undeclared (first use in this function)
+  cli_add_function(profile, "dump", "dump memory", dump);
+                                                   ^~~~
+..\main.c:50:66: error: 'interrupt' undeclared (first use in this function)
+  cli_add_function(profile, "interrupt", "generate an interrupt", interrupt);
+                                                                  ^~~~~~~~~
+..\main.c:51:85: error: 'open_terminal' undeclared (first use in this function)
+  if(!open_terminal_flag) cli_add_function(profile, "terminal", "open the terminal", open_terminal);
+                                                                                     ^~~~~~~~~~~~~
+..\main.c: At top level:
+..\main.c:92:16: error: conflicting types for 'get_int_parameter'
+ static boolean get_int_parameter(cli_profile profile, char *name, unsigned int *number){
+                ^~~~~~~~~~~~~~~~~
+..\main.c:33:5: note: previous implicit declaration of 'get_int_parameter' was here
+  if(get_int_parameter(cli_p, "-c", &com_port)){
+     ^~~~~~~~~~~~~~~~~
+Info: Nothing to build for Programmer V1
+18:21:13 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+..\main.c: In function 'cli_setup':
+..\main.c:33:5: warning: implicit declaration of function 'get_int_parameter' [-Wimplicit-function-declaration]
+  if(get_int_parameter(cli_p, "-c", &com_port)){
+     ^~~~~~~~~~~~~~~~~
+..\main.c: In function 'create_cli':
+..\main.c:48:58: error: 'upload' undeclared (first use in this function)
+  cli_add_function(profile, "upload", "upload to memory", upload);
+                                                          ^~~~~~
+..\main.c:48:58: note: each undeclared identifier is reported only once for each function it appears in
+..\main.c:49:51: error: 'dump' undeclared (first use in this function)
+  cli_add_function(profile, "dump", "dump memory", dump);
+                                                   ^~~~
+..\main.c:50:66: error: 'interrupt' undeclared (first use in this function)
+  cli_add_function(profile, "interrupt", "generate an interrupt", interrupt);
+                                                                  ^~~~~~~~~
+..\main.c:51:85: error: 'open_terminal' undeclared (first use in this function)
+  if(!open_terminal_flag) cli_add_function(profile, "terminal", "open the terminal", open_terminal);
+                                                                                     ^~~~~~~~~~~~~
+..\main.c: At top level:
+..\main.c:92:16: error: conflicting types for 'get_int_parameter'
+ static boolean get_int_parameter(cli_profile profile, char *name, unsigned int *number){
+                ^~~~~~~~~~~~~~~~~
+..\main.c:33:5: note: previous implicit declaration of 'get_int_parameter' was here
+  if(get_int_parameter(cli_p, "-c", &com_port)){
+     ^~~~~~~~~~~~~~~~~
+Info: Nothing to build for Programmer V1
+18:22:21 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+..\main.c: In function 'cli_setup':
+..\main.c:33:5: warning: implicit declaration of function 'get_int_parameter' [-Wimplicit-function-declaration]
+  if(get_int_parameter(cli_p, "-c", &com_port)){
+     ^~~~~~~~~~~~~~~~~
+..\main.c: In function 'create_cli':
+..\main.c:48:58: error: 'upload' undeclared (first use in this function)
+  cli_add_function(profile, "upload", "upload to memory", upload);
+                                                          ^~~~~~
+..\main.c:48:58: note: each undeclared identifier is reported only once for each function it appears in
+..\main.c:49:51: error: 'dump' undeclared (first use in this function)
+  cli_add_function(profile, "dump", "dump memory", dump);
+                                                   ^~~~
+..\main.c:50:66: error: 'interrupt' undeclared (first use in this function)
+  cli_add_function(profile, "interrupt", "generate an interrupt", interrupt);
+                                                                  ^~~~~~~~~
+..\main.c:51:85: error: 'open_terminal' undeclared (first use in this function)
+  if(!open_terminal_flag) cli_add_function(profile, "terminal", "open the terminal", open_terminal);
+                                                                                     ^~~~~~~~~~~~~
+..\main.c: At top level:
+..\main.c:92:16: error: conflicting types for 'get_int_parameter'
+ static boolean get_int_parameter(cli_profile profile, char *name, unsigned int *number){
+                ^~~~~~~~~~~~~~~~~
+..\main.c:33:5: note: previous implicit declaration of 'get_int_parameter' was here
+  if(get_int_parameter(cli_p, "-c", &com_port)){
+     ^~~~~~~~~~~~~~~~~
+Info: Nothing to build for Programmer V1
+18:22:46 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe cli_library_V1.o main.o serial.o 
+c:/mingw/bin/../lib/gcc/mingw32/6.3.0/../../../../mingw32/bin/ld.exe: cannot open output file Programmer.exe: Permission denied
+collect2.exe: error: ld returned 1 exit status
+Info: Nothing to build for Programmer V1
+18:23:23 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -o Programmer.exe cli_library_V1.o main.o serial.o 
+Info: Nothing to build for Programmer V1
+18:25:50 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe cli_library_V1.o main.o serial.o 
+c:/mingw/bin/../lib/gcc/mingw32/6.3.0/../../../../mingw32/bin/ld.exe: cannot open output file Programmer.exe: Permission denied
+collect2.exe: error: ld returned 1 exit status
+Info: Nothing to build for Programmer V1
+18:26:04 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -o Programmer.exe cli_library_V1.o main.o serial.o 
+Info: Nothing to build for Programmer V1
+Info: Nothing to build for Programmer
+Info: Nothing to build for Programmer V1
+Info: Nothing to build for Programmer
+Info: Nothing to build for Programmer V1
+18:26:23 **** Clean-only build of configuration Debug for project Programmer ****
+rm -rf cli_library_V1.o main.o Programmer.exe serial.d main.d cli_library_V1.d serial.o 
+18:26:25 **** Rebuild of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o cli_library_V1.o "..\\cli_library_V1.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o serial.o "..\\serial.c" 
+gcc -o Programmer.exe cli_library_V1.o main.o serial.o 
+Info: Nothing to build for Programmer V1
+18:27:06 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe cli_library_V1.o main.o serial.o 
+Info: Nothing to build for Programmer V1
+18:27:25 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe cli_library_V1.o main.o serial.o 
+Info: Nothing to build for Programmer V1
+18:28:31 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe cli_library_V1.o main.o serial.o 
+Info: Nothing to build for Programmer V1
+18:29:05 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe cli_library_V1.o main.o serial.o 
+c:/mingw/bin/../lib/gcc/mingw32/6.3.0/../../../../mingw32/bin/ld.exe: cannot open output file Programmer.exe: Permission denied
+collect2.exe: error: ld returned 1 exit status
+Info: Nothing to build for Programmer V1
+18:29:14 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -o Programmer.exe cli_library_V1.o main.o serial.o 
+Info: Nothing to build for Programmer V1
+18:33:08 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe cli_library_V1.o main.o serial.o 
+Info: Nothing to build for Programmer V1
+18:35:00 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe cli_library_V1.o main.o serial.o 
+Info: Nothing to build for Programmer V1
+18:35:49 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe cli_library_V1.o main.o serial.o 
+Info: Nothing to build for Programmer V1
+18:37:00 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe cli_library_V1.o main.o serial.o 
+Info: Nothing to build for Programmer V1
+18:38:34 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o cli_library_V1.o "..\\cli_library_V1.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe cli_library_V1.o main.o serial.o 
+Info: Nothing to build for Programmer V1
+18:39:14 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o cli_library_V1.o "..\\cli_library_V1.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe cli_library_V1.o main.o serial.o 
+Info: Nothing to build for Programmer V1
+18:43:32 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o cli_library_V1.o "..\\cli_library_V1.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe cli_library_V1.o main.o serial.o 
+c:/mingw/bin/../lib/gcc/mingw32/6.3.0/../../../../mingw32/bin/ld.exe: cannot open output file Programmer.exe: Permission denied
+collect2.exe: error: ld returned 1 exit status
+Info: Nothing to build for Programmer V1
+18:43:46 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -o Programmer.exe cli_library_V1.o main.o serial.o 
+Info: Nothing to build for Programmer V1
+18:50:10 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -o Programmer.exe cli_library_V1.o main.o serial.o 
+Info: Nothing to build for Programmer V1
+19:44:17 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o main.o "..\\main.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o terminal.o "..\\terminal.c" 
+..\terminal.c: In function 'create_cli':
+..\terminal.c:209:58: warning: passing argument 4 of 'cli_add_function' from incompatible pointer type [-Wincompatible-pointer-types]
+  cli_add_function(profile, "release", "release the bus", release_bus);
+                                                          ^~~~~~~~~~~
+In file included from ..\terminal.h:15:0,
+                 from ..\terminal.c:9:
+..\cli_library_V1.h:70:6: note: expected 'cli_callback {aka void (*)(struct cli_profile *)}' but argument is of type 'void (*)(void)'
+ void cli_add_function(cli_profile profile, char *name, char *description, cli_callback cb);
+      ^~~~~~~~~~~~~~~~
+gcc -o Programmer.exe cli_library_V1.o main.o serial.o terminal.o 
+Info: Nothing to build for Programmer V1
+19:46:18 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o terminal.o "..\\terminal.c" 
+..\terminal.c:24:13: warning: 'release_bus' defined but not used [-Wunused-function]
+ static void release_bus(void){
+             ^~~~~~~~~~~
+gcc -o Programmer.exe cli_library_V1.o main.o serial.o terminal.o 
+Info: Nothing to build for Programmer V1
+19:47:32 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o terminal.o "..\\terminal.c" 
+..\terminal.c: In function 'hold_bus':
+..\terminal.c:23:6: warning: implicit declaration of function 'send_command' [-Wimplicit-function-declaration]
+   if(send_command('p')){
+      ^~~~~~~~~~~~
+..\terminal.c: At top level:
+..\terminal.c:40:16: error: conflicting types for 'send_command'
+ static boolean send_command(char cmd){
+                ^~~~~~~~~~~~
+..\terminal.c:23:6: note: previous implicit declaration of 'send_command' was here
+   if(send_command('p')){
+      ^~~~~~~~~~~~
+Info: Nothing to build for Programmer V1
+19:48:30 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o terminal.o "..\\terminal.c" 
+gcc -o Programmer.exe cli_library_V1.o main.o serial.o terminal.o 
+Info: Nothing to build for Programmer V1
+19:51:11 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o terminal.o "..\\terminal.c" 
+gcc -o Programmer.exe cli_library_V1.o main.o serial.o terminal.o 
+Info: Nothing to build for Programmer V1
+19:58:47 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o terminal.o "..\\terminal.c" 
+gcc -o Programmer.exe cli_library_V1.o main.o serial.o terminal.o 
+Info: Nothing to build for Programmer V1
+19:59:25 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o terminal.o "..\\terminal.c" 
+gcc -o Programmer.exe cli_library_V1.o main.o serial.o terminal.o 
+Info: Nothing to build for Programmer V1
+20:00:19 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o terminal.o "..\\terminal.c" 
+gcc -o Programmer.exe cli_library_V1.o main.o serial.o terminal.o 
+Info: Nothing to build for Programmer V1
+20:01:54 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o terminal.o "..\\terminal.c" 
+gcc -o Programmer.exe cli_library_V1.o main.o serial.o terminal.o 
+Info: Nothing to build for Programmer V1
+20:04:46 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o terminal.o "..\\terminal.c" 
+gcc -o Programmer.exe cli_library_V1.o main.o serial.o terminal.o 
+Info: Nothing to build for Programmer V1
+20:14:15 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o terminal.o "..\\terminal.c" 
+gcc -o Programmer.exe cli_library_V1.o main.o serial.o terminal.o 
+c:/mingw/bin/../lib/gcc/mingw32/6.3.0/../../../../mingw32/bin/ld.exe: cannot open output file Programmer.exe: Permission denied
+collect2.exe: error: ld returned 1 exit status
+Info: Nothing to build for Programmer V1
+20:14:23 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -o Programmer.exe cli_library_V1.o main.o serial.o terminal.o 
+Info: Nothing to build for Programmer V1
+21:11:02 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o terminal.o "..\\terminal.c" 
+gcc -o Programmer.exe cli_library_V1.o main.o serial.o terminal.o 
+Info: Nothing to build for Programmer V1
+21:24:38 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o terminal.o "..\\terminal.c" 
+..\terminal.c: In function 'get_int_parameter':
+..\terminal.c:65:53: warning: comparison between pointer and integer
+  if((strlen(parameter_str) > 3) && parameter_str[0] == "0" && parameter_str[1] == "X"){
+                                                     ^~
+..\terminal.c:65:53: warning: comparison with string literal results in unspecified behavior [-Waddress]
+..\terminal.c:65:80: warning: comparison between pointer and integer
+  if((strlen(parameter_str) > 3) && parameter_str[0] == "0" && parameter_str[1] == "X"){
+                                                                                ^~
+..\terminal.c:65:80: warning: comparison with string literal results in unspecified behavior [-Waddress]
+gcc -o Programmer.exe cli_library_V1.o main.o serial.o terminal.o 
+Info: Nothing to build for Programmer V1
+21:25:08 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o terminal.o "..\\terminal.c" 
+gcc -o Programmer.exe cli_library_V1.o main.o serial.o terminal.o 
+Info: Nothing to build for Programmer V1
+21:43:13 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o terminal.o "..\\terminal.c" 
+gcc -o Programmer.exe cli_library_V1.o main.o serial.o terminal.o 
+Info: Nothing to build for Programmer V1
+21:53:36 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o terminal.o "..\\terminal.c" 
+gcc -o Programmer.exe cli_library_V1.o main.o serial.o terminal.o 
+Info: Nothing to build for Programmer V1
+21:56:05 **** Incremental Build of configuration Debug for project Programmer ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o terminal.o "..\\terminal.c" 
+gcc -o Programmer.exe cli_library_V1.o main.o serial.o terminal.o 
+Info: Nothing to build for Programmer V1
+Info: Nothing to build for Programmer
+Info: Nothing to build for Programmer V1
+Info: Nothing to build for Programmer
+Info: Nothing to build for Programmer V1

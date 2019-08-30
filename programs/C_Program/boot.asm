@@ -1,0 +1,9 @@
+CPU 8086
+BITS 16
+
+section .boot
+mov SP, 0x10
+mov ax, 0
+mov ss, ax
+jmp 0xf000:0xc000
+db 0x90, 0x90, 0x90

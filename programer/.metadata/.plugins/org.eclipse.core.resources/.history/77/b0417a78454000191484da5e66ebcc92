@@ -1,0 +1,278 @@
+/*
+ * File: terminal.c
+ * Project: Programmer
+ *
+ * Created on: 6.3.2019
+ * Author: Eldad Hellerman
+ */
+
+#include "terminal.h"
+
+typedef unsigned char byte;
+cli_profile profile;
+boolean is_bus_held = false;
+
+static void wait_for_ack(void){
+	char buffer;
+	do serial_read(&buffer, 1); while(buffer != 6);
+}
+
+static boolean send_command(char cmd){
+	boolean r = (serial_write(&cmd, 1) != 1);
+	//wait_for_ack();
+	return(r);
+}
+
+static boolean send_char(char c){
+	return(serial_write(&c, 1) != 1);
+}
+
+static boolean send_uint32(unsigned int num){
+	char buffer[4];
+	buffer[0] = (num>>24) & 0xff;
+	buffer[1] = (num>>16) & 0xff;
+	buffer[2] = (num>> 8) & 0xff;
+	buffer[3] = (num>> 0) & 0xff;
+	boolean r = (serial_write(buffer, 4) != 4);
+	return(r);
+}
+
+static void hold_bus(void){
+	if(!is_bus_held){
+		printf("holding bus\n");
+		if(send_command('p')){
+			printf("ERROR, cannot hold bus\n");
+			return;
+		}
+		is_bus_held = true;
+	}
+}
+
+static void release_bus(void){
+	if(is_bus_held){
+		printf("releasing bus\n");
+		if(send_command('c')){
+			printf("ERROR, cannot hold bus\n");
+			return;
+		}
+		is_bus_held = false;
+	}
+}
+
+static boolean get_int_parameter(cli_profile profile, char *name, unsigned int *number){
+	char *parameter_str;
+	if((parameter_str = cli_get_parameter(profile, name)) == NULL) return(true);
+	if((strlen(parameter_str) > 3) && parameter_str[0] == "0" && parameter_str[1] == "X"){
+		return(sscanf(parameter_st+2r,"%x",number) != 1);
+	}else{
+		return(sscanf(parameter_str,"%d",number) != 1);
+	}
+}
+
+static void cli_upload(cli_profile cli_p){
+	FILE *file;
+	char buffer[1024*1024];
+	char *input_file;
+	unsigned int memory_start;
+	//printf("uploading %s through com %d at %d\n",p->input_file_path, p->com_port, p->baud_rate);
+	if((input_file = cli_get_parameter(cli_p, "-i")) == NULL){
+		printf("\tERROR, input file not specified!\n");
+		return;
+	}
+	if(get_int_parameter(cli_p, "-ms", &memory_start)){
+		printf("\tERROR, memory start not specified!\n");
+		return;
+	}
+	printf("input path is '%s' with start at %d\n",input_file, memory_start);
+
+	file = fopen(input_file,"rb");
+	if(file == NULL){
+		printf("\tError! file wasn't found\n");
+		return;
+	}
+	fseek(file, 0, SEEK_END);
+	int file_size = ftell(file);
+	fseek(file, 0, SEEK_SET);
+	if(file_size > 1024*1024){
+		printf("\tERROR! File is too big");
+		fclose(file);
+		return;
+	}
+	if(fread(buffer,1,file_size,file) != file_size){
+		printf("\tERROR! could not read file completely\n");
+		fclose(file);
+		return;
+	}
+	printf("\tread file, size: %d\n",file_size);
+	fclose(file);
+
+	hold_bus();
+	if(send_command('u') || send_uint32(memory_start) || send_uint32(file_size)){
+		printf("\tERROR, cannot initiate communication\n");
+		return;
+	}
+	int wrote = 0;
+	while(wrote < file_size){
+		int w = serial_write(buffer+wrote, (file_size-wrote > 256) ? 256 : (file_size-wrote));
+		if(!w){ wrote = 0; break;}
+		wrote += w;
+		wait_for_ack();
+	}
+	if(wrote == 0){
+		printf("\tERROR, serial communication error\n");
+		return;
+	}
+	printf("\tProgrammed successfully!\n");
+}
+
+static void cli_dump(cli_profile cli_p){
+	//printf("dumping memory through com %d at %d",p->com_port, p->baud_rate);
+	unsigned int start, length;
+	char *output_file;
+	if(get_int_parameter(cli_p, "-ms", &start) || get_int_parameter(cli_p, "-ml", &length)){
+		start = 0;
+		length = 64*1024;
+	}
+	output_file = cli_get_parameter(cli_p, "-o");
+
+	char buffer[length];
+	hold_bus();
+	if((send_command('m') || send_uint32(start) || send_uint32(length))){
+		printf("ERROR, cannot initiate communication\n");
+		return;
+	}
+	int read = 0;
+	while(read < length){
+		int r = serial_read(buffer, length);
+		if(!r){ read = 0; break;}
+		read += r;
+	}
+	if(read == 0){
+		printf("ERROR, serial communication error\n");
+		return;
+	}
+	printf("Memory was read successfully!\n");
+
+	if(output_file == NULL){
+		if(start % 16 != 0){
+			printf("%05X:    ",start&(~0x0f));
+			for(int p=0; p < start%16; p++) printf("   ");
+		}
+		for(unsigned int i=start; i<start+length; i++){
+			if((i%16) == 0) printf("%05X:    ",i);
+			//if(((i%16) == 15)) printf("%.2X\n", ((int)buffer[i])&0xff); else printf("%.2X,", ((int)buffer[i])&0xff);
+			printf(((i%16) == 15) ? "%.2X\n" : "%.2X,", ((int)buffer[i-start])&0xff);
+		}
+		if((start+length) % 16 != 0) printf("\n");
+	}else{
+		FILE *file;
+		file = fopen(output_file,"wb+");
+		if(file == NULL){
+			printf("Error! can't write to file\n");
+			return;
+		}
+		if(fwrite(buffer,1,length,file) != length){
+			printf("ERROR! could not write file completely\n");
+			fclose(file);
+			return;
+		}
+		printf("wrote to file!\n");
+		fclose(file);
+	}
+}
+
+static void cli_erase(cli_profile cli_p){
+	unsigned int address;
+	unsigned int block;
+	if(!get_int_parameter(cli_p, "-mb", &block)){
+		switch(block){
+			case 1: address = 0x80000; break;
+			case 2: address = 0xA0000; break;
+			case 3: address = 0xC0000; break;
+			case 4: address = 0xE0000; break;
+			case 5: address = 0xF8000; break;
+			case 6: address = 0xFA000; break;
+			case 7: address = 0xFC000; break;
+			default:
+				printf("ERROR, invalid block number\n");
+				return;
+		}
+	}else{
+		if(get_int_parameter(cli_p, "-ms", &address)){
+			printf("ERROR, must specify block number or block start address\n");
+			return;
+		}
+	}
+	hold_bus();
+	if((send_command('e') || send_uint32(address))){
+		printf("ERROR, cannot erase memory\n");
+		return;
+	}
+	printf("erased successfully!\n");
+}
+
+static void cli_interrupt(cli_profile cli_p){
+	unsigned int interrupt_number;
+	if(get_int_parameter(cli_p, "-r", &interrupt_number)){
+		printf("interrupt number not specified\n");
+		return;
+	}
+	if((interrupt_number < 0) || (interrupt_number > 255)){
+		printf("interrupt number must be between 0 and 255\n");
+		return;
+	}
+	if((send_command('i') || send_char((unsigned char)interrupt_number))){
+		printf("ERROR, cannot send interrupt\n");
+		return;
+	}
+	printf("generated interrupt #%d successfully!\n", interrupt_number);
+}
+
+static void cli_nm_interrupt(cli_profile cli_p){
+	if(send_command('n')){
+		printf("ERROR, cannot send NMI\n");
+		return;
+	}
+	printf("generated NMI successfully!\n");
+}
+
+static void cli_hold_bus(cli_profile cli_p){
+	hold_bus();
+}
+
+static void cli_release_bus(cli_profile cli_p){
+	release_bus();
+}
+
+static void create_cli(void){
+	profile = cli_create_profile("--------------------------------------------------\n8086 Programer Terminal\nWritten by EH\nA utility for interfacing with the 8086 board\n\nUsage: Programer.exe function [options]\n");
+	cli_add_function(profile, "hold", "hold the bus", cli_hold_bus);
+	cli_add_function(profile, "release", "release the bus", cli_release_bus);
+	cli_add_function(profile, "upload", "upload to memory", cli_upload);
+	cli_add_function(profile, "dump", "dump memory", cli_dump);
+	cli_add_function(profile, "interrupt", "generate an interrupt", cli_interrupt);
+	cli_add_function(profile, "nmi", "generate a NMI", cli_nm_interrupt);
+	cli_add_function(profile, "erase", "erase flash block", cli_erase);
+	cli_add_parameter(profile, "-ms", "--from", "memory start", "Sets the memory start");
+	cli_add_parameter(profile, "-ml", "--length", "memory length", "Sets the memory length");
+	cli_add_parameter(profile, "-mb", "--block", "memory block", "Sets the memory block for flash erase");
+	cli_add_parameter(profile, "-o", "--output", "output path", "Sets the output path");
+	cli_add_parameter(profile, "-i", "--input", "input path", "Sets the input path");
+	cli_add_parameter(profile, "-r", "--interrupt", "interrupt number", "Sets the interrupt number");
+}
+
+void terminal(int com_port, int baud_rate){
+	create_cli();
+	if(!serial_open(com_port, baud_rate)) return;
+	while(1){
+		printf(">");
+		char argument[1001] = {0};
+		fgets(argument,1000,stdin);
+		argument[strlen(argument)-1] = '\0';
+		if(strncmp(argument,"exit",4) == 0) break;
+		cli_parse_from_string(profile, argument, strlen(argument));
+	}
+	release_bus();
+	serial_close();
+	cli_delete_profile(profile);
+}

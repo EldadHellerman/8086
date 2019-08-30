@@ -1,0 +1,222 @@
+/*
+ * Project: Programmer
+ * File: cli_library_V1.c
+ *
+ * Created on: 6.3.2019
+ * Author: Eldad Hellerman
+ */
+
+#include "cli_library.h"
+
+#include "memory_leaks_detector_insert.h"
+
+static char* get_str_cpy(char *source){ //TODO replace with strdup() possibly? - but then there is no memory leaks indication!
+	int length = strlen(source) + 1;
+	char *result = malloc(length * sizeof(char));
+	memcpy(result,source,length);
+	return(result);
+}
+#define strdup get_str_cpy
+
+static int get_next_token_distance(char *str){
+	int next = 0;
+	while(*(str+next) == ' ') next++;
+	return(next);
+}
+
+static int get_token_length(char *str){
+	int next = 0;
+	if(*str == '"'){
+		next++;
+		while(*(str+next) != '"') next++;
+		next++;
+	}
+	else while(*(str+next) != ' ') next++;
+	return(next);
+}
+
+static void clean(cli_profile profile){
+	for(int f=0; f < profile->amount_of_flags; f++) profile->flags[f].count = 0;
+	for(int p=0; p < profile->amount_of_parameters; p++){
+		free(profile->parameters[p].parameter);
+		profile->parameters[p].parameter = NULL;
+	}
+	profile->cb_queue_length = 0;
+	free(profile->cb_queue);
+}
+
+cli_profile cli_create_profile(char *description){
+	cli_profile profile = malloc(sizeof(struct cli_profile));
+	profile->amount_of_flags = 0;
+	profile->amount_of_parameters = 0;
+	profile->amount_of_functions = 0;
+	profile->flags = NULL;
+	profile->parameters = NULL;
+	profile->functions = NULL;
+	profile->cb_queue_length = 0;
+	profile->cb_queue = NULL;
+	profile->description = strdup(description);
+	cli_add_function(profile, "help", "print the help menu", cli_print_help);
+	return(profile);
+}
+
+void cli_delete_profile(cli_profile profile){
+	clean(profile);
+	for(int f=0; f < profile->amount_of_flags; f++){
+		free(profile->flags[f].name);
+		free(profile->flags[f].name_2);
+		free(profile->flags[f].description);
+	}
+	for(int p=0; p < profile->amount_of_parameters; p++){
+		free(profile->parameters[p].name);
+		free(profile->parameters[p].name_2);
+		free(profile->parameters[p].parameter_name);
+		free(profile->parameters[p].description);
+	}
+	for(int f=0; f < profile->amount_of_functions; f++){
+		free(profile->functions[f].name);
+		free(profile->functions[f].description);
+	}
+	free(profile->flags);
+	free(profile->parameters);
+	free(profile->functions);
+	free(profile->description);
+	free(profile);
+}
+
+void cli_add_flag(cli_profile profile, char *name, char *name_2, char *description){
+	if(profile->amount_of_flags % 10 == 0) profile->flags = realloc(profile->flags,(profile->amount_of_flags + 10) * sizeof(struct cli_flag));
+	int i = profile->amount_of_flags++;
+	profile->flags[i].name = strdup(name);
+	profile->flags[i].name_2 = (name_2 == NULL) ? NULL : strdup(name_2);
+	profile->flags[i].description = strdup(description);
+}
+
+void cli_add_parameter(cli_profile profile, char *name, char *name_2, char *parameter_name, char *description){
+	if(profile->amount_of_parameters % 10 == 0) profile->parameters = realloc(profile->parameters,(profile->amount_of_parameters + 10) * sizeof(struct cli_parameter));
+	int i = profile->amount_of_parameters++;
+	profile->parameters[i].name = strdup(name);
+	profile->parameters[i].name_2 = (name_2 == NULL) ? NULL : strdup(name_2);
+	profile->parameters[i].parameter_name = strdup(parameter_name);
+	profile->parameters[i].description = strdup(description);
+	profile->parameters[i].parameter = NULL;
+}
+
+void cli_add_function(cli_profile profile, char *name, char *description, cli_callback cb){
+	if(profile->amount_of_functions % 10 == 0) profile->functions = realloc(profile->functions,(profile->amount_of_functions + 10) * sizeof(struct cli_function));
+	int i = profile->amount_of_functions++;
+	profile->functions[i].name = strdup(name);
+	profile->functions[i].description = strdup(description);
+	profile->functions[i].cb = cb;
+}
+
+cli_flag cli_has_flag(cli_profile profile, char *name){
+	for(int f=0; f < profile->amount_of_flags; f++){
+		if(strcmp(profile->flags[f].name, name) == 0) return(&(profile->flags[f]));
+	}
+	return(NULL);
+}
+
+cli_parameter cli_has_parameter(cli_profile profile, char *name){
+	for(int p=0; p < profile->amount_of_parameters; p++){
+		if(strcmp(profile->parameters[p].name, name) == 0) return(&(profile->parameters[p]));
+	}
+	return(NULL);
+}
+
+void cli_parse_from_string(cli_profile profile, char *input, int length){
+	clean(profile);
+	char *data = input;
+	int left;
+	data += get_next_token_distance(data);
+	while(data < input+length){
+		//printf("parsing from '%s' (%p/%p) left %d\n",data,data, input+length, input+length-data);
+		for(int f=0; f < profile->amount_of_functions; f++){
+			int l1 = strlen(profile->functions[f].name);
+			left = input+length-data;
+			if((left >= l1) && (strncmp(profile->functions[f].name,data,l1) == 0)){
+				data += strlen(profile->functions[f].name);
+				if(profile->cb_queue_length % 10 == 0) profile->cb_queue = realloc(profile->cb_queue,(profile->cb_queue_length + 10) * sizeof(cli_callback));
+				profile->cb_queue[profile->cb_queue_length++] = profile->functions[f].cb;
+				goto loop_again;
+			}
+		}
+		for(int p=0; p<profile->amount_of_parameters; p++){
+			int l1 = strlen(profile->parameters[p].name), l2 = (profile->parameters[p].name_2 == NULL) ? 0 : strlen(profile->parameters[p].name_2);
+			if(	((left >= l1) && (strncmp(profile->parameters[p].name, data, l1) == 0)) ||
+				((profile->parameters[p].name_2 != NULL) && (left >= l2) && (strncmp(profile->parameters[p].name_2, data, l2) == 0))){
+				data += (strncmp(profile->parameters[p].name, data, l1) == 0) ? l1 : l2;
+				data += get_next_token_distance(data);
+				int parameter_length = get_token_length(data);
+				char *next_data = data + parameter_length;
+				if(*data == '"'){ parameter_length -= 2; data++;}
+				if(profile->parameters[p].parameter != NULL){ free(profile->parameters[p].parameter); printf("parameter <%s> repeats.\n",profile->parameters[p].parameter_name);}
+				profile->parameters[p].parameter = malloc(parameter_length + sizeof(char));
+				memcpy(profile->parameters[p].parameter,data,parameter_length);
+				profile->parameters[p].parameter[parameter_length] = '\0';
+				data = next_data;
+				goto loop_again;
+			}
+		}
+		for(int f=0; f < profile->amount_of_flags; f++){
+			int l1 = strlen(profile->flags[f].name), l2 = (profile->flags[f].name_2 == NULL) ? 0 : strlen(profile->flags[f].name_2);
+			left = input+length-data;
+			//printf("left is %d, l1 is %d, l2 is %d\n",left,l1,l2);
+			if(	((left >= l1) && (strncmp(profile->flags[f].name, data, l1) == 0)) ||
+				((profile->flags[f].name_2 != NULL) && (left >= l2) && (strncmp(profile->flags[f].name_2, data, l2) == 0))){
+				data += (strncmp(profile->flags[f].name, data, l1) == 0) ? l1 : l2;
+				profile->flags[f].count++;
+				goto loop_again;
+			}
+		}
+		//error:
+		printf("there was an error from '%s' (%p/%p)\n",data,data, input+length);
+		return;
+
+		loop_again:
+		data += get_next_token_distance(data);
+	}
+	/*
+	printf("status after parsing:\n");
+	printf("parameters:\n");
+	for(int p=0; p<profile->amount_of_parameters; p++){
+		if(profile->parameters[p].parameter!= NULL) printf("\t%-10s - '%s'\n",profile->parameters[p].name_2,profile->parameters[p].parameter);
+	}
+	printf("flags:\n");
+	for(int f=0; f<profile->amount_of_flags; f++){
+		if(profile->flags[f].count != 0) printf("\t%-10s - #%d\n",profile->flags[f].name, profile->flags[f].count);
+	}
+	printf("%d functions on the queue:\t", profile->cb_queue_length);
+	for(int cb=0; cb < profile->cb_queue_length; cb++) printf("%p, ",(char *)profile->cb_queue[cb]);
+	printf("\ncalling functions:\n");
+	*/
+	for(int cb=0; cb < profile->cb_queue_length; cb++) profile->cb_queue[cb](profile);
+}
+
+void cli_print_help(cli_profile profile){
+	static int width = 35;
+	int printed;
+	printf("%s", profile->description);
+	printf("options:\n");
+	printf("\tfunctions:\n");
+	for(int func=0; func < profile->amount_of_functions; func++){
+		printed = printf("\t\t%s", profile->functions[func].name);
+		printf("%*s",width-printed," ");
+		printf("%s\n",profile->functions[func].description);
+	}
+	printf("\tparameters:\n");
+	for(int p=0; p < profile->amount_of_parameters; p++){
+		printed = printf("\t\t%s", profile->parameters[p].name);
+		if(profile->parameters[p].name_2 != NULL) printed += printf(", %s", profile->parameters[p].name_2);
+		printed += printf(" <%s>", profile->parameters[p].parameter_name);
+		printf("%*s",width-printed," ");
+		printf("%s\n",profile->parameters[p].description);
+	}
+	printf("\tflags:\n");
+	for(int f=0; f < profile->amount_of_flags; f++){
+		printed = printf("\t\t%s", profile->flags[f].name);
+		if(profile->flags[f].name_2 != NULL) printed += printf(", %s", profile->flags[f].name_2);
+		printf("%*s",width-printed," ");
+		printf("%s\n",profile->flags[f].description);
+	}
+}

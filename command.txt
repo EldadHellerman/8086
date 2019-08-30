@@ -1,0 +1,10 @@
+Programmer.exe -c13 -b400000 dump -o"..\..\..\full_flash_3_1.bin" --from1044288 --length4288
+--from524288 --length32768
+
+Programmer.exe -c13 -b400000 dump -o"..\..\..\full_flash_2_7.bin" --from524288 --length32768
+
+
+Programmer.exe -c13 -b400000 terminal
+reset upload -ms0x0000 -i"Debug\test.o" reset release
+dump -ms0x0000 -ml0x1000 -o"out.bin"
+release interrupt -r0x0

@@ -1,0 +1,232 @@
+/*
+ * atmega_memory_test.c
+ *
+ * Created: 21/01/2019 19:22:31
+ * Author : Eldad
+ */ 
+
+#define F_CPU 16000000UL
+#include <avr/io.h>
+#include <util/delay.h>
+#include <inttypes.h>
+#include "simpleUART.h"
+//#include "defines.h"
+#include "defines_byte.h"
+
+uint8_t flash_read_byte(uint16_t address){
+	/*steps:
+		-set RD, WR, BHE, ALE off
+		-set RD, WR, BHE, ALE as output
+		-set AD as output
+		-output address
+		-latch
+		-set AD as input
+		-RD on
+		-read data
+		-RD off
+	*/
+	uint8_t result = 0;
+	RD_OFF(); WR_OFF(); BHE_OFF(); ALE_OFF();
+	CONTROL_DDR |= (1<<RD) | (1<<WR) | (1<<BHE) | (1<<ALE);
+	AD_DDR = 0xff;
+	AD_PORT = address; _delay_us(1);
+	ALE_ON(); ALE_OFF(); _delay_us(1);
+	//AD_PORT = 0; _delay_us(100); AD_DDR = 0; _delay_us(100);
+	AD_DDR = 0; AD_PORT = 0; _delay_us(1);
+	RD_ON(); _delay_us(1);
+	result = AD_PIN;
+	RD_OFF();
+	return(result);
+}
+
+void flash_write_byte(uint16_t address, char data){
+	/*steps:
+		-set RD, WR, BHE, ALE off
+		-set RD, WR, BHE, ALE as output
+		-set AD as output
+		-output address
+		-latch
+		-output data
+		-WR on
+		-WR off
+		-set AD as input
+	*/
+	//printf("address %d, data %d\n", address, data);
+	RD_OFF(); WR_OFF(); BHE_OFF(); ALE_OFF();
+	CONTROL_DDR |= (1<<RD) | (1<<WR) | (1<<BHE) | (1<<ALE);
+	AD_DDR = 0xff;
+	AD_PORT = address; _delay_us(1);
+	ALE_ON(); ALE_OFF(); _delay_us(1);
+	AD_PORT = data; _delay_us(1);
+	WR_ON(); _delay_us(1);
+	WR_OFF(); _delay_us(1);
+	AD_DDR = 0; AD_PORT = 0; _delay_us(1);
+}
+
+typedef unsigned char byte;
+int test_flash_byte(void){
+	int errors = 0;
+	for(int b=0; b<256; b++){
+		for(int i=0; i<256; i++) flash_write_byte(i,b);
+		for(int i=0; i<256; i++) if(flash_read_byte(i) != b) errors++;
+	}
+	//if(errors != 0) printf("after stage #1, %d errors\n",errors);
+	for(int page=0; page<1; page++){
+		for(int i=0; i<256; i++) flash_write_byte((page<<8) + i,i);
+		for(int i=0; i<256; i++) if(flash_read_byte((page<<8) + i) != i) errors++;
+		//if(errors != 0) printf("after stage #2, %d errors\n",errors);
+		
+		for(int i=0; i<256; i++) flash_write_byte((page<<8) + i,~((byte)i));				//this test does not work!
+		for(int i=0; i<256; i++) if(flash_read_byte((page<<8) + i) != ~((byte)i)) errors++;	//i don't know why..
+		
+		for(int i=0; i<256; i++) flash_write_byte((page<<8) + i,(i + 5)%256);
+		for(int i=0; i<256; i++) if(flash_read_byte((page<<8) + i) != (i + 5)%256) errors++;
+		
+		if(errors != 0) printf("after stage #3, %d errors\n",errors);
+		for(int i=0; i<256; i++) flash_write_byte((page<<8) + i,0xff);
+	}
+	//printf("done\n");
+	return(errors);
+}
+
+int main_byte(void){
+	/*DDRA = 0xff;
+	DDRC = 0xff;
+	PORTA = 0xff;
+	PORTC = 0xff;*/
+	init_uart_115200();
+	//flash_write_byte(0,0xff);
+	for(int i=0; i<256; i++) flash_write_byte((uint16_t)i,~((char)i)); /* this overrides the byte written in the previous line*/
+	
+	int err;
+	while(1){
+		err = test_flash_byte();
+		printf("tested flash, there were %d errors\n", err);
+		for(int i=0; i<256; i++){
+			char b = flash_read_byte(i);
+			if((i%16) == 0) printf("0x%02X    ",i);
+			printf("%02X,",b);
+			if((i%16) == 15) printf("\n");
+		}
+		_delay_ms(250);
+	}
+	//flash_write_byte(0xff,0);
+	//char b = flash_read_byte(0);
+	//printf("%c",b);
+	//while(1);
+	
+	while(1){
+		for(int i=0; i<256; i++){
+			char b = flash_read_byte(i);
+			if((i%16) == 0) printf("0x%02X    ",i);
+			printf("%02X,",b);
+			if((i%16) == 15) printf("\n");
+		}
+		 _delay_ms(10000);
+	}
+	/*
+	while(1){
+		SET_AD(i);
+		i++;
+		_delay_us(1);
+		ALE_ON();
+		//TODO for some reason ADL6 & ADL6 sometimes have spikes at this point (they go up with ALE). needs checking with oscilloscope.
+		ALE_OFF();
+		_delay_us(1);
+		SET_AD(0);
+		_delay_ms(1);
+	}
+	
+	while(1){
+		SET_AD(i); i++;
+		_delay_us(1);
+		ALE_ON();
+		//TODO for some reason ADL6 & ADL6 sometimes have spikes at this point (they go up with ALE). needs checking with oscilloscope.
+		ALE_OFF();
+		_delay_us(1);
+		SET_AD(0);
+		_delay_ms(1);
+	}
+
+	
+	CONTROL_DDR = 0;
+	AD_LOW_DDR = 0;
+	AD_HIGH_DDR = 0;
+	AD_LOW_PORT = 0;
+	AD_HIGH_PORT = 0;
+	//CONTROL_PORT = (1<<RD) | (1<<WR) | (1<<BHE);
+	
+	init_uart_115200();
+	
+	printf("testing\n");
+	CONTROL_DDR |= (1<<ALE) | (1<<RD);
+	AD_LOW_DDR = 0xff;
+	AD_HIGH_DDR = 0xff;
+	SET_AD(0xffff);
+	ALE_ON();
+	ALE_OFF();
+	SET_AD(0);
+	printf("done\n");
+	while(1);
+	
+    while(1){
+		printf("waiting to hold bus\n");
+		hold_bus();
+		printf("bus is held\n");
+		for(int i=0; i<1024*4; i+=2){
+			printf("%.4X,",flash_read_word(i));
+			if(i%32 == 31) printf("\n");
+		}
+		release_bus();
+		printf("bus is released\n");
+		_delay_ms(10000);
+    }
+	*/
+}
+
+
+
+/*
+void hold_bus(void){
+	CONTROL_DDR &= ~((1<<HOLD) | 1<<(HLDA));
+	CONTROL_PORT &= ~((1<<HOLD) | 1<<(HLDA));
+	//while(CONTROL_PIN & ~(1<<HOLD)); //wait until HOLD is low
+	CONTROL_PORT |= 1<<HOLD;
+	CONTROL_DDR |= 1<<HOLD;
+	//while(!(CONTROL_PIN & ~(1<<HLDA))); //wait until HLDA is high
+}
+
+void release_bus(void){
+	CONTROL_PORT &= ~(1<<HOLD);
+	CONTROL_DDR &= ~(1<<HOLD);
+}
+
+uint16_t flash_read_word(uint16_t address){ //needs address to be word aligned
+	uint16_t result = 0;
+	AD_LOW_DDR = 0xff;
+	AD_HIGH_DDR = 0xff;
+	RD_OFF();
+	CONTROL_DDR |= (1<<ALE) | (1<<RD);
+	
+	BHE_OFF();
+	address &= 0xFFFE;
+	AD_LOW_PORT = (address & 0xff);
+	AD_HIGH_PORT = ((address>>8) & 0xff);
+	printf("set AD low as 0x%.2X\n",(address & 0xff));
+	ALE_ON();
+	ALE_OFF();
+	AD_LOW_DDR = 0;
+	AD_HIGH_DDR = 0;
+	AD_LOW_PORT = 0;
+	AD_HIGH_PORT = 0;
+	
+	RD_ON();
+	result = (AD_HIGH_PIN << 8) | AD_LOW_PIN;
+	RD_OFF();
+	
+	CONTROL_DDR &= ~((1<<ALE) | (1<<RD));
+	AD_HIGH_DDR = 0;
+	AD_LOW_DDR = 0;
+	return(result);
+}
+*/

@@ -1,0 +1,13 @@
+8086 Motherboard bootstrapping steps:
+
+1. Write binary data to memory chip, with a simple program to automaticly write to memory from data input (auto
+   increment the address, and generate all necassery control signals), to allow for easier binary programing.
+
+2. write very basic assembler, with pre-programmed instructions, maybe using a dictionary search,
+   then translate to binary by hand and upload using step 1.
+
+3. assemble the same program from step 2 using step 2 assembler.
+
+4. write a better assembler than the one from step 2, supporting more commands, using the assembler from step 3.
+
+5. write better and better assemblers, using the assemblers that are already established.

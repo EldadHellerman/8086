@@ -1,0 +1,8 @@
+The 8086 Motherboard was mounted on a breadboard, and consisting of:
+-The 8086
+-2* 8-bit latches
+-2* 2kB 8-bit SRAM
+-A switch to switch the power to the 8086 and an LED indicator and a resistor for it.
+-3* pullup resistor - for lined RD,WR and READY.
+-an Arduino pro mini to generate a clock close to 33.3% duty cycle, using a timer compare output in phase correct PWM mode.
+-an Arduino mega, to interface with the memory bus and control signals in order to read and write from the memory, generate reset signals, and generate interrupts.

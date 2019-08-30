@@ -1,0 +1,33 @@
+/*
+ * File: cli_library.h
+ *
+ * Created on: 5.3.2019
+ * Author: Eldad Hellerma
+ */
+
+#ifndef CLI_LIBRARY_H_
+#define CLI_LIBRARY_H_
+
+
+
+//cli library interface:
+//every piece of string that is parsed is either a parameter, a flag, or a function
+//"string" is what the user types, "second string" is an alternate form and can be NULL - for example "-v" and "--verify".
+//a functions callback will be called if the function was specified.
+//a parameter is followed by another string
+//-h, --help and help are used for automatic help menu
+
+//CLI_PROFILE create_cli_profile();
+//delete_cli_profile(profile);
+//add_flag(profile, "string","second string","description")								- a flag doesn't have anything after it.
+//add_parameter(profile, "string","second string","parameter name", "description")		- a parameter expects a string to follow it (can be after a space or immediately).
+//add_function(profile, "string","description", *callback);								- a function is called by order of appearance when the string is there, after parsing the other non function options
+//
+//boolean has_flag(profile, "string or second string")
+//boolean has_parameter(profile, "string or second string")
+//string get_parameter(profile, "string or second string")				-as long as cli_profile not deleted, pointer is active. returns null if parameter doesn't exist.
+//
+//void parse_cli(profile)
+
+
+#endif /* CLI_LIBRARY_H_ */

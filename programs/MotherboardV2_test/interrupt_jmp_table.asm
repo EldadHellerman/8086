@@ -1,0 +1,3 @@
+interrupt_table_start:
+times 256 db 0x00, 0x04, 0x00, 0x00
+interrupt_table_end:

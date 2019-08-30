@@ -1,0 +1,79 @@
+/*
+ * Project: Programmer
+ * File: cli_library_V1.h
+ *
+ * Created on: 6.3.2019
+ * Author: Eldad Hellerman
+ */
+
+#ifndef CLI_LIBRARY_H_
+#define CLI_LIBRARY_H_
+
+#include "stdlib.h"
+#include "stdio.h"
+#include "memory.h"
+
+/*
+cli library interface:
+every piece of string that is parsed is either a flag, a parameter, or a function
+	flag has the amount of times it was used, for example, "-v -v -v" is 3
+	parameter has the string that follows it, for example, "--from start", "-o "my file.bin""
+	function has its callback which will be called if the function is specified
+the help function is used for automatic help menu
+*/
+
+struct cli_profile;
+typedef struct cli_profile *cli_profile;
+typedef struct cli_parameter *cli_parameter;
+typedef struct cli_flag *cli_flag;
+typedef void (*cli_callback)(cli_profile profile);
+
+struct cli_flag{
+	char *name;
+	char *name_2;
+	char *description;
+	int count;
+};
+
+struct cli_parameter{
+	char *name;
+	char *name_2;
+	char *parameter_name;
+	char *description;
+	char *parameter;
+};
+
+struct cli_function{
+	char *name;
+	char *description;
+	cli_callback cb;
+};
+
+struct cli_profile{
+	int amount_of_flags;
+	int amount_of_parameters;
+	int amount_of_functions;
+	struct cli_flag *flags;
+	struct cli_parameter *parameters;
+	struct cli_function *functions;
+	int cb_queue_length;
+	cli_callback *cb_queue;
+	char *description;
+	cli_callback setup_function;
+};
+
+cli_profile cli_create_profile(char *description);
+void cli_delete_profile(cli_profile profile);
+void cli_set_setup_function(cli_profile profile, cli_callback cb)
+void cli_add_flag(cli_profile profile, char *name, char *name_2, char *description);
+void cli_add_parameter(cli_profile profile, char *name, char *name_2, char *parameter_name, char *description);
+void cli_add_function(cli_profile profile, char *name, char *description, cli_callback cb);
+
+void cli_print_help(cli_profile profile);
+void cli_parse_from_string(cli_profile profile, char *input, int length);
+
+cli_flag cli_has_flag(cli_profile profile, char *name);
+cli_parameter cli_has_parameter(cli_profile profile, char *name);
+char *cli_get_parameter(cli_profile profile, char *name);
+
+#endif /* CLI_LIBRARY_H_ */

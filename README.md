@@ -3,9 +3,9 @@
  
  
  Files:  
-  coprocessor\    -    code for the atmega328p coprocessor used for controlling the 8086 and programing the memory  
-  motherboard\    -    pictures and general information  
-  programmer\     -    cmd tool to interface with the coprocessor - memory read/write, interrupt generation, reset, etc  
-  programs\       -    8086 programs  
+-coprocessor\    -    code for the atmega328p coprocessor used for controlling the 8086 and programing the memory  
+-motherboard\    -    pictures and general information  
+-programmer\     -    cmd tool to interface with the coprocessor - memory read/write, interrupt generation, reset, etc  
+-programs\       -    8086 programs  
   
   
